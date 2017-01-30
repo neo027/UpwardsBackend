@@ -96,7 +96,7 @@ def linkedin(request):
     return JsonResponse({
         "meta": {},
         "data": {}
-    })
+    }, 400)
 
 
 @csrf_exempt
@@ -110,21 +110,27 @@ def linkedin2(request):
 @csrf_exempt
 def config(request):
     if request.method == 'GET':
-        return JsonResponse({
-            "eligiblity_states": {
-                "PAN": 25,
-                "professional": 25,
-                "education": 25,
-                "miscellaneous": 25
-            },
-            "KYC": {
-                "AADHAR": 25,
-                "AADHAR_details": 25,
-                "personal": 25,
-                "uploads": 25
-            }
+        return JsonResponse(
+            {
+                "USER_STATE": {
+                    "eligiblity": {
+                        "not_started": 0,
+                        "PAN": 25,
+                        "professional": 50,
+                        "education": 75,
+                        "miscellaneous": 100
+                    },
+                    "KYC": {
+                        "not_started": 0,
+                        "AADHAR": 25,
+                        "AADHAR_details": 50,
+                        "personal": 75,
+                        "uploads": 100
+                    }
 
-        })
+                },
+                "BASE_URL": "http://40237ad1.ngrok.io",
+            })
     else:
         return JsonResponse({
             "meta": {},

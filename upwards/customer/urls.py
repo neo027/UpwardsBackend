@@ -8,6 +8,7 @@ urlpatterns = [
         views.homepage, name='homepage'),
     url(r'linkedin', views.linkedin, name='linkedin'),
     url(r'linkedin2', views.linkedin2, name='linkedin2'),
-    url(r'config', views.config, name='config'),
+    url(r'config', views.config, name='config')
+
 
 ]
